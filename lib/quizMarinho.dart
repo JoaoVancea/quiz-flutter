@@ -66,12 +66,7 @@ class _QuizState extends State<QuizMarinho> {
 
   @override
   Widget build(BuildContext context) {
-    String texto = 'null';
-    if (questoesAcertadas == questions.length) {
-      texto = 'Você acertou todas as questões!';
-    } else {
-      texto = 'Você acertou $questoesAcertadas $palavraQuestao';
-    }
+    String texto = questoesAcertadas == questions.length ? 'Você acertou todas as questões!' : 'Você acertou $questoesAcertadas $palavraQuestao!';
     int quantidadeQuestoes = questions.length;
     if (quizConcluido) {
       return Column(
@@ -85,13 +80,17 @@ class _QuizState extends State<QuizMarinho> {
               children: [
                 Image.asset('assets/gifParabens.gif', width: 400, height: 300),
                 Center(
-                  child: Text('Você finalizou o quiz!\n$texto! ($questoesAcertadas/$quantidadeQuestoes)\nRetornando para a página inicial...',
+                  child: Text('Você finalizou o quiz!\n$texto ($questoesAcertadas/$quantidadeQuestoes)',
                     style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.center
                   ),
                 ),
               ],
             ),
+          ),
+          Text('Retornando para a página inicial...',
+            style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 95, 93, 93), decoration: TextDecoration.none),
+            textAlign: TextAlign.center
           ),
         ],
       );
