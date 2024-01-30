@@ -63,7 +63,7 @@ class _QuizState extends State<QuizTerrestre> {
     var currentQuestion = questions[currentQuestionIndex];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz marítimo!', style: GoogleFonts.roboto(fontWeight: FontWeight.bold))
+        title: Text('Quiz terrestre!', style: GoogleFonts.roboto(fontWeight: FontWeight.bold))
         ),
       body: Column(
         children: [

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projeto_quiz/home_page.dart';
 
 class QuizMarinho extends StatefulWidget {
   const QuizMarinho({Key? key}) : super(key: key);
@@ -15,6 +14,7 @@ class _QuizState extends State<QuizMarinho> {
   String? selectedAnswer;
   bool? isCorret;
   bool quizConcluido = false;
+  String palavraQuestao = 'null';
 
   final List<Map<String, dynamic>> questions = [
     {
@@ -46,9 +46,9 @@ class _QuizState extends State<QuizMarinho> {
     } else {
       setState(() {
         quizConcluido = true;
-        Future.delayed(Duration(seconds: 5), () {
+        /*Future.delayed(Duration(seconds: 5), () {
           Navigator.of(context).push(MaterialPageRoute(builder:(_)=> new HomePage()));
-        });
+        });*/
       });
     }
   }
@@ -66,6 +66,13 @@ class _QuizState extends State<QuizMarinho> {
 
   @override
   Widget build(BuildContext context) {
+    String texto = 'null';
+    if (questoesAcertadas == questions.length) {
+      texto = 'Você acertou todas as questões!';
+    } else {
+      texto = 'Você acertou $questoesAcertadas $palavraQuestao';
+    }
+    int quantidadeQuestoes = questions.length;
     if (quizConcluido) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,8 +84,11 @@ class _QuizState extends State<QuizMarinho> {
             child: Column(
               children: [
                 Image.asset('assets/gifParabens.gif', width: 400, height: 300),
-                Text('Você finalizou o quiz!\nVocê acertou $questoesAcertadas questões!\nRetornando para a página inicial...',
-                  style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.bold),
+                Center(
+                  child: Text('Você finalizou o quiz!\n$texto! ($questoesAcertadas/$quantidadeQuestoes)\nRetornando para a página inicial...',
+                    style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ],
             ),
@@ -114,6 +124,7 @@ class _QuizState extends State<QuizMarinho> {
               if (isSelected) {
                 buttonColor = isCorret! ? Colors.green : Colors.red;
                 isCorret! ? questoesAcertadas++ : null;
+                palavraQuestao = questoesAcertadas == 1 ? 'questão' : 'questões';
               }
 
               return meuBtn(resposta, () => handleAnswer(resposta), buttonColor);

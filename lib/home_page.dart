@@ -10,14 +10,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('QuizNovais', style: GoogleFonts.nunitoSans(fontSize: 18, fontWeight: FontWeight.bold)),
+        title: Text('QuizJoão', style: GoogleFonts.nunitoSans(fontSize: 18, fontWeight: FontWeight.bold)),
         centerTitle: false,
         actions: const [
             Icon(Icons.search)
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
