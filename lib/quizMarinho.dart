@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:projeto_quiz/home_page.dart';g
 
 class QuizMarinho extends StatefulWidget {
   const QuizMarinho({Key? key}) : super(key: key);
@@ -46,9 +47,9 @@ class _QuizState extends State<QuizMarinho> {
     } else {
       setState(() {
         quizConcluido = true;
-        /*Future.delayed(Duration(seconds: 5), () {
+        Future.delayed(Duration(seconds: 5), () {
           Navigator.of(context).push(MaterialPageRoute(builder:(_)=> new HomePage()));
-        });*/
+        });
       });
     }
   }
