@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projeto_quiz/home_page.dart';g
+import 'package:projeto_quiz/home_page.dart';
 
 class QuizMarinho extends StatefulWidget {
   const QuizMarinho({Key? key}) : super(key: key);
